@@ -1,0 +1,19 @@
+#include "stdio.h"
+#include "math.h"
+
+long int x_to_the_n(int x, int n)
+{
+	long int result = 0;
+	result = pow (x, n);
+	return (result);
+}
+
+int main()
+{
+printf("x to the n returns = %li\n\n\n", x_to_the_n(5, 0));
+printf("x to the n returns = %li\n\n\n", x_to_the_n(8, 1));
+printf("x to the n returns = %li\n\n\n", x_to_the_n(8, 2));
+printf("x to the n returns = %li\n\n\n", x_to_the_n(8, 3));
+
+return 0;
+}
