@@ -1,0 +1,34 @@
+#include "stdio.h"
+
+float absoluteValue(float x)
+{
+	if (x < 0)
+		x = -x;
+	return (x);
+}
+
+//function to compute the square root of a number
+float squareRoot(float x)
+{
+	const float epsilon = .0001;
+	float guess = 1.0;
+
+	while (absoluteValue(guess * guess - x) >= epsilon)	{
+		guess = (x / guess + guess) / 2.0;
+		printf("after calc guess is equal to %f\n\n", guess);
+	}
+	return guess;
+}
+
+int main()
+{
+	printf("squareRoot (2.0) = %f\n\n\n", squareRoot(2.0));
+	printf("squareRoot (144.0) = %f\n\n\n", squareRoot(144.0));
+	printf("squareRoot (625.0) = %f\n\n\n", squareRoot(625.0));
+	printf("squareRoot (2500.0) = %f\n\n\n", squareRoot(2500.0));
+	printf("squareRoot (10000.0) = %f\n\n\n", squareRoot(10000.0));
+	printf("squareRoot (17.5) = %f\n\n\n", squareRoot(17.5));
+	printf("squareRoot (16.0) = %f\n\n\n", squareRoot(16.0));
+	printf("squareRoot (25.0) = %f\n\n\n", squareRoot(25.0));
+	return 0;
+}
