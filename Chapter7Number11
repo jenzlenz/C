@@ -1,0 +1,22 @@
+#include "stdio.h"
+#include "math.h"
+
+int arraySum(int arr[], int size) {
+
+	int i;
+	double sum = 0;
+
+	for (i = 0; i < size; ++i) {
+		sum += arr[i];
+	}
+
+	return sum;
+}
+
+int main()
+{
+int numbers[] = { 10, 25, 33, 49, 58 };
+printf("the sum of all the integers in the array is %i\n\n\n", arraySum(numbers, 5));
+
+return 0;
+}
