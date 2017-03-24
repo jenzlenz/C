@@ -1,0 +1,21 @@
+#include "stdio.h"
+#define	MIN(a,b) ( ((a) < (b)) ? (a) : (b) )
+
+int main()
+{
+	int a, b, min;
+
+	printf("This program can identify the smaller of two numbers,\n"); 
+	printf("Enter one number: ");
+	scanf("%d", &a);
+	printf("Enter another number: ");
+	scanf("%d", &b);
+
+	if (a == b) {
+		printf("These numbers are equal.\n");
+	} else {
+		min = MIN(a, b);
+		printf("Minimum number is: %d\n", min);
+	}
+	return 0;
+}
