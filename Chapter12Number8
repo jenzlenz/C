@@ -1,0 +1,22 @@
+#include "stdio.h"
+#define	IS_DIGIT(x) ( ((x) >= '0') && ((x) <= '9') )
+#define	IS_LOWER(x) ( ((x) >= 'a') && ((x) <= 'z') )
+#define	IS_UPPER(x) ( ((x) >= 'A') && ((x) <= 'Z') )
+#define IS_ALPHABETIC(x) ( (IS_LOWER(x)) || (IS_UPPER(x)) )
+#define IS_NOT_SPECIAL(x) ( (IS_DIGIT(x)) ) || ( (IS_ALPHABETIC(x)) ) 
+
+int main()
+{
+	char x;
+
+	printf("This program can identify if a single character input is a special character or not.\n");
+	printf("Enter one single letter: ");
+	scanf("%c", &x);
+
+	if (IS_NOT_SPECIAL(x)){
+		printf("The character you entered was not a special character.\n");
+	} else {
+	 printf("The character you entered was a special character.\n");
+	}
+return 0;
+}
