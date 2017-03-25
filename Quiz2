@@ -1,0 +1,39 @@
+/*
+Intro to C/C++ 
+Quiz #2
+Jennifer Dooley
+March 25, 2017
+*/
+
+#include <stdio.h>
+#include <math.h>
+
+int main()
+{
+	const int n = 100;
+	int array[100] = { '\0' };
+	int i = 0, sum = 0;
+	float mean = 0.0, std = 0.0;
+
+	//populate the array with numbers 0 to 99 and 
+	//calculate the sum of all numbers in the array
+	for (i = 0; i < 100; i++) {
+		array[i] = i;
+		sum += array[i];
+	}
+	printf("Sum is equal to %i\n\n", sum);
+
+	//calculate the mean
+	mean = (float)sum / n;
+	printf("The mean is: %6.3f \n\n", mean);
+
+	//calculate standard deviation
+	sum = 0.0;
+	for (i = 0; i < n; i++)
+		sum += (array[i] - mean) * (array[i] - mean);
+
+	std = (float) sqrt(sum / n);
+	printf("The standard deviation is: %6.3f\n\n", std);
+
+	return 0;
+}
