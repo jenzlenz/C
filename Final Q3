@@ -1,0 +1,33 @@
+#include <stdio.h>
+
+int main() {
+
+	int size = 20;
+	int fib[20] = { '\0' };
+
+	for (int i = 0; i <= size; i++) {
+		printf("for population loop i equals %i\n", i);
+		if (i == 0) {
+			fib[i] = 0;
+			printf("i equals zero - fib[i] equals %i\n", fib[i]);
+		}
+		else
+		{
+			if (i == 1) {
+				fib[i] = 1;
+				printf("i equals one - fib[i] equals %i\n", fib[i]);
+			}
+			else {
+			fib[i] = fib[i - 2] + fib[i - 1];
+			printf("i is greater than one - fib[i] equals %i\n", fib[i]);
+			}
+		}
+	}
+
+	//fibonacci(&fib[0], size);
+	//for (int i = 0; i < size; i++)
+	//	printf("Fib[%i] is %i\n", i, fib[i]);
+
+	return 0;
+}
+
