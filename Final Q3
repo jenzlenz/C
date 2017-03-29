@@ -1,33 +1,47 @@
 #include <stdio.h>
 
-int main() {
+void fibonnaci(int fib[], int size) {
 
-	int size = 21, sum = 0;
-	int fib[21] = { '\0' };
-
+	printf("Inside the fib function.\n");
+	printf("the value of the size parameter passed into the function is %i.\n", size);
 	for (int i = 0; i < size; i++) {
-		printf("for population loop i equals %i\n", i);
+		//printf("for population loop i equals %i\n", i);
 		if (i == 0) {
 			fib[i] = 0;
-			printf("i equals zero - fib[i] equals %i\n", fib[i]);
+			//printf("i equals zero - fib[i] equals %i\n", fib[i]);
 		}
 		else
 		{
 			if (i == 1) {
 				fib[i] = 1;
-				printf("i equals one - fib[i] equals %i\n", fib[i]);
+				//printf("i equals one - fib[i] equals %i\n", fib[i]);
 			}
 			else {
 				fib[i] = fib[i - 2] + fib[i - 1];
-				printf("i is greater than one - fib[i] equals %i\n", fib[i]);
+				//printf("i is greater than one - fib[i] equals %i\n", fib[i]);
 			}
 		}
 	}
+}
 
-	//fibonacci(&fib[0], size);
+int main() {
+
+	int fib[20] = { 0 };
+	int size = 20;
+	int sum = 0;
+	int *fib_ptr = &fib[0];
+
+	fibonnaci(&fib, 20);
+
+	//call function to popuate the matrix with fist 21 fib numbers
+	//fibonacci(&fib, 21);
+
+	
+
+	//calculate the sum
 	for (int i = 0; i < size; i++) {
 		printf("Fib[%i] is %i\n", i, fib[i]);
-		sum = sum + fib[i];
+		sum += fib[i];
 	}
 
 	printf("the sum of the first 21 fibonacci numbers is %i.\n", sum);
