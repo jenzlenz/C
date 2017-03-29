@@ -1,65 +1,65 @@
-/***********************************************************************
-Program Name: fibonacci.c
+/***********************************************************************************
+Program Name: words.c
 Author: Jennifer Dooley
 Date: March 29, 2017
-Synopsis: Write a program that calls a function to calcuate the first 
-20 fibonacci numbers.  The write second fucntion that calculates the 
-sum of all the fibonacci numbers.
-***********************************************************************/
+Synopsis: Write a program that reads in a character array, 
+counts the numbers of words in the array and
+capitalizes the first letter of each word
+***********************************************************************************/
 
 #include <stdio.h>
 
-void fibonnaci(int fib[], int size) {
+int countWords(char prose[]) {
 
-	for (int i = 0; i < size; i++) {
-		if (i == 0) {
-			fib[i] = 0;
+	int i = 0;
+	int wordCount = 0;
+	while (prose[i] != '\0') {
+		printf("prose[i] is equal to %c.\n", prose[i]);
+
+		switch (prose[i]) {
+		case ' ':
+			wordCount++;
+			printf("word_count is now equal to %i.\n", wordCount);
+			break;
+		default:
+			//printf("not a blank\n");
+			break;
 		}
-		else
-		{
-			if (i == 1) {
-				fib[i] = 1;
-			}
-			else 
-			{
-				fib[i] = fib[i - 2] + fib[i - 1];
-			}
-		}
+
+		++i;
+
 	}
+	++wordCount; //add one more to word_count since the program derives a word with a space at the end
+	printf("FINAL word_count is now equal to %i.\n", wordCount);
+
+	return wordCount;
 }
 
-int fibsum(int fib[], int size) {
+int main()
+{
 
-	int sum = 0;
-
-	for (int i = 0; i < size; i++) {
-		//printf("Fib[%i] is %i\n", i, fib[i]);
-		sum += fib[i];
-	}
-
-	return sum;
-}
-
-int main() {
-
-	int fib[21] = { 0 };
-	int size = 21;
-	int sum = 0;
-	int *fib_ptr = &fib[0];
-
-	//call function to popuate the matrix with fist 21 fib numbers
-	fibonnaci(&fib, size);
+	int i = 0, wordCount = 0;
 	
-	//print out the fibonacci numbers justt calculated to ensure they are correct
-	for (int i = 0; i < size; ++i) {
-		printf("Fibonacci %i is %i.\n", i, fib[i]);
-	}
+	char prose[] = "To be, or not to be, that is the question";
+		/*
+		whether 'tis nobler in the mind to suffer
+		the slings and arrows of outrageous fortune,
+		or to take arms against a sea of troubles,
+		and by opposing end them ? to die, to sleep—
+		no more; and by a sleep, to say we end
+		the heart - ache, and the thousand natural shocks
+		that flesh is heir to ? 'tis a consummation
+		devoutly to be wished.to die, to sleep,
+		to sleep, perchance to dream; aye, there's the rub,
+		for in that sleep of death, what dreams may come,
+		 when we have shuffled off this mortal coil,
+		 must give us pause.";
+		 */
 
-	//call function to calculate the sum of all the fib numbers in array
-	sum = fibsum(&fib, size);
+	char *prose_ptr = &prose[0];
+
+	//call function to count the number of words in the char string prose
+	wordCount = countWords(&prose[0]);
 	
-	//print the sum
-	printf("The sum of the first 20 fibonacci numbers is %i.\n", sum);
-
 	return 0;
 }
