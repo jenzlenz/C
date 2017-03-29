@@ -1,0 +1,61 @@
+/************************************************************
+Program name: grades.c
+Author: J Dooley
+Date: March 25, 2017
+Synopsis: Write a progeam to count the number of letter grades within an array
+Use a second array to store how many of each grade exists.
+*************************************************************/
+#include <stdio.h>
+
+int main()
+
+{
+	char grade[32] = { 'A', 'B', 'C', 'D', 'f', 'I',
+		'b', 'C', 'd', 'F', 'I', 'a',
+		'C', 'D', 'F', 'I', 'A', 'B',
+		'D', 'F', 'I', 'A', 'B', 'c',
+		'I' , 'D', 'F', 'F', 'A', 'B',
+		'a', 'b' };
+
+	int hist_grade[6] = { 0, 0, 0, 0, 0, 0 };
+	int *hist_grade_ptr = &hist_grade[0];
+
+	for (int i = 0; i < 32; i++) {
+
+		switch (grade[i])
+		{
+		case 'A':
+		case 'a':
+			hist_grade[0] = hist_grade_ptr[0] + 1;
+			break;
+		case 'B':
+		case 'b':
+			hist_grade[1] = hist_grade_ptr[1] + 1;
+			break;
+		case 'C':
+		case 'c':
+			hist_grade[2] = hist_grade_ptr[2] + 1;
+			break;
+		case 'D':
+		case 'd':
+			hist_grade[3] = hist_grade_ptr[3] + 1;
+			break;
+		case 'F':
+		case 'f':
+			hist_grade[4] = hist_grade_ptr[4] + 1;
+			break;
+		case 'I':
+		case 'i':
+			hist_grade[5] = hist_grade_ptr[5] + 1;
+			break;
+		default:
+			printf("Unrecognized letter.\n");
+		}
+
+	}
+	for (int j = 0; j < 6; ++j) {
+		printf("The final value of hist_grade[%i] is %i\n", j, hist_grade[j]);
+	}
+
+	return 0;
+}
