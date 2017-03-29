@@ -13,7 +13,7 @@ capitalizes the first letter of each word
 int main()
 {
 
-	int i = 0;
+	int i = 0, word_count = 0;
 	char prose[] = "To be, or not to be, that is the question";
 		/*
 		whether 'tis nobler in the mind to suffer
@@ -32,8 +32,22 @@ int main()
 
 	while (prose[i] != '\0') {
 		printf("prose[i] is equal to %c.\n", prose[i]);
+		
+		switch (prose[i]) {
+		case ' ':
+			word_count++;
+			printf("word_count is now equal to %i.\n", word_count);
+			break;
+		default:
+			//printf("not a blank\n");
+			break;
+		}
+		
 		++i;
+		
 	}
+	++word_count; //add one more to word_count since the program derives a word with a space at the end
+	printf("FINAL word_count is now equal to %i.\n", word_count);
 	
 	return 0;
 }
