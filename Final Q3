@@ -2,10 +2,10 @@
 
 int main() {
 
-	int size = 20;
-	int fib[20] = { '\0' };
+	int size = 21;
+	int fib[21] = { '\0' };
 
-	for (int i = 0; i <= size; i++) {
+	for (int i = 0; i < size; i++) {
 		printf("for population loop i equals %i\n", i);
 		if (i == 0) {
 			fib[i] = 0;
@@ -25,9 +25,12 @@ int main() {
 	}
 
 	//fibonacci(&fib[0], size);
-	//for (int i = 0; i < size; i++)
-	//	printf("Fib[%i] is %i\n", i, fib[i]);
+	for (int i = 0; i < size; i++) {
+		printf("Fib[%i] is %i\n", i, fib[i]);
+		sum = sum + fib[i];
+	}
+
+	printf("the sum of the first 21 fibonacci numbers is %i.\n", sum);
 
 	return 0;
 }
-
