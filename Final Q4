@@ -14,16 +14,13 @@ int countWords(char prose[]) {
 	int i = 0, c = 0;
 	int wordCount = 0;
 	while (prose[i] != '\0') {
-		printf("prose[i] is equal to %c.\n", prose[i]);
 		
 		switch 	(prose[i])
 		{
 		case ' ':
 			wordCount++;
-			printf("word_count is now equal to %i.\n", wordCount);
 			break;
 		default:
-			//printf("not a blank\n");
 			break;
 		}
 
@@ -31,31 +28,50 @@ int countWords(char prose[]) {
 
 	}
 	++wordCount; //add one more to word_count since the program derives a word with a space at the end
-	printf("FINAL word_count is now equal to %i.\n", wordCount);
+	printf("FINAL word_count is %i.\n\n\n", wordCount);
 
 	return wordCount;
+}
+
+cap(char prose[]) {
+	
+	int a = 0, i = 0;
+	_Bool newWord = 0;
+
+	while (prose[i] != '\0') {
+		a = prose[i];    //convert char into ascii
+		if ((a == 32) || (a == 9)) {    //32 is ascii for space
+			newWord = 1; //if space then next charater sh be conveted to upper case
+		}
+
+		if (((prose[i] >= 'a') && (prose[i] <= 'z')) && (newWord == 1)) {   //it's a lower case letter after a space
+			prose[i] = (char)prose[i] - 32;
+			newWord = 0;   //set flag to false since we already did the conversion to upper case
+		}
+
+		++i;
+	}
 }
 
 int main()
 {
 
 	int i = 0, wordCount = 0;
-	
-	char prose[] = "To be, or not to be, that is the question";
-		/*
-		whether 'tis nobler in the mind to suffer
-		the slings and arrows of outrageous fortune,
-		or to take arms against a sea of troubles,
-		and by opposing end them ? to die, to sleep—
-		no more; and by a sleep, to say we end
-		the heart - ache, and the thousand natural shocks
-		that flesh is heir to ? 'tis a consummation
-		devoutly to be wished.to die, to sleep,
-		to sleep, perchance to dream; aye, there's the rub,
-		for in that sleep of death, what dreams may come,
-		 when we have shuffled off this mortal coil,
-		 must give us pause.";
-		 */
+		
+	char prose[] = "To be or not to be, that is the question "
+		"whether 'tis nobler in the mind to suffer "
+		"the slings and arrows of outrageous fortune, " 
+		"or to take arms against a sea of troubles, "
+		"and by opposing end them? to die, to sleep— "
+		"no more; and by a sleep, to say we end "
+		"the heart-ache, and the thousand natural shocks "
+		"that flesh is heir to? 'tis a consummation "
+		"devoutly to be wished. to die, to sleep, "
+		"to sleep, perchance to dream; aye, there's the rub, "
+		"for in that sleep of death, what dreams may come, "
+		 "when we have shuffled off this mortal coil, "
+		 "must give us pause.";
+		 
 
 	char *prose_ptr = &prose[0];
 
@@ -63,17 +79,16 @@ int main()
 	wordCount = countWords(&prose[0]);
 
 	//convert the first lower case letter of each word to an upper case letter
-	while (prose[i] != '\0') {
-		printf("prose[i] is equal to %c.\n", prose[i]);
-		
-		if ((prose[i] >= 'a') && (prose[i] <= 'z')) { //it's a lowercase letter
-			printf("Found a lowercase letter.\n");
-			prose[i] = (char)prose[i] - 32;
-			printf("after conversion the letter %c is %d\n", prose[i], prose[i]);
-		}
-		++i;
+	cap(&prose[0]);
 
+	//print the resulting character prose array
+	i = 0;   //reset i to the beginning of array
+	printf("The revised character array has the following content:\n");
+	while (prose[i] != '\0') {
+		printf("%c", prose[i]);
+		++i;
 	}
+
 	
 	return 0;
 }
