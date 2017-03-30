@@ -11,12 +11,13 @@ capitalizes the first letter of each word
 
 int countWords(char prose[]) {
 
-	int i = 0;
+	int i = 0, c = 0;
 	int wordCount = 0;
 	while (prose[i] != '\0') {
 		printf("prose[i] is equal to %c.\n", prose[i]);
-
-		switch (prose[i]) {
+		
+		switch 	(prose[i])
+		{
 		case ' ':
 			wordCount++;
 			printf("word_count is now equal to %i.\n", wordCount);
@@ -60,6 +61,19 @@ int main()
 
 	//call function to count the number of words in the char string prose
 	wordCount = countWords(&prose[0]);
+
+	//convert the first lower case letter of each word to an upper case letter
+	while (prose[i] != '\0') {
+		printf("prose[i] is equal to %c.\n", prose[i]);
+		
+		if ((prose[i] >= 'a') && (prose[i] <= 'z')) { //it's a lowercase letter
+			printf("Found a lowercase letter.\n");
+			prose[i] = (char)prose[i] - 32;
+			printf("after conversion the letter %c is %d\n", prose[i], prose[i]);
+		}
+		++i;
+
+	}
 	
 	return 0;
 }
