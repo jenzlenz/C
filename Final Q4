@@ -9,11 +9,38 @@ capitalizes the first letter of each word
 
 #include <stdio.h>
 
+int countWords(char prose[]) {
+
+	int i = 0, c = 0;
+	int wordCount = 0;
+	while (prose[i] != '\0') {
+		printf("prose[i] is equal to %c.\n", prose[i]);
+		
+		switch 	(prose[i])
+		{
+		case ' ':
+			wordCount++;
+			printf("word_count is now equal to %i.\n", wordCount);
+			break;
+		default:
+			//printf("not a blank\n");
+			break;
+		}
+
+		++i;
+
+	}
+	++wordCount; //add one more to word_count since the program derives a word with a space at the end
+	printf("FINAL word_count is now equal to %i.\n", wordCount);
+
+	return wordCount;
+}
 
 int main()
 {
 
-	int i = 0, word_count = 0;
+	int i = 0, wordCount = 0;
+	
 	char prose[] = "To be, or not to be, that is the question";
 		/*
 		whether 'tis nobler in the mind to suffer
@@ -30,24 +57,23 @@ int main()
 		 must give us pause.";
 		 */
 
+	char *prose_ptr = &prose[0];
+
+	//call function to count the number of words in the char string prose
+	wordCount = countWords(&prose[0]);
+
+	//convert the first lower case letter of each word to an upper case letter
 	while (prose[i] != '\0') {
 		printf("prose[i] is equal to %c.\n", prose[i]);
 		
-		switch (prose[i]) {
-		case ' ':
-			word_count++;
-			printf("word_count is now equal to %i.\n", word_count);
-			break;
-		default:
-			//printf("not a blank\n");
-			break;
+		if ((prose[i] >= 'a') && (prose[i] <= 'z')) { //it's a lowercase letter
+			printf("Found a lowercase letter.\n");
+			prose[i] = (char)prose[i] - 32;
+			printf("after conversion the letter %c is %d\n", prose[i], prose[i]);
 		}
-		
 		++i;
-		
+
 	}
-	++word_count; //add one more to word_count since the program derives a word with a space at the end
-	printf("FINAL word_count is now equal to %i.\n", word_count);
 	
 	return 0;
 }
