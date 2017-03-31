@@ -1,0 +1,44 @@
+#include "stdio.h"
+
+int bitpat_search(int num, int pattern, int len_pattern)
+{
+	int index = 0, count = 0;
+
+	int len_num = 0;
+	int p = pattern;
+	int temp = num;
+
+	/* count the number of bits in the number */
+	while (temp) {
+		len_num++;
+		temp = temp >> 1;
+	}
+
+	//if pattern is longer than the number, no way it will be found
+	if (len_num < len_pattern)
+		return -1;
+
+	//index = 0;
+
+	while (index < len_num) {
+		if ((pattern << index) == (((~(~0 << len_pattern)) << index)&num)) {
+			count++;
+		}
+
+		index++;
+
+		if (len_pattern > len_num - index)
+			break;
+	}
+
+	return index-len_pattern;
+}
+
+
+int main()
+{
+	int index = 0;
+	index = bitpat_search(0xe1f4, 0x5, 3);
+	printf("The index the pattern was found at is %i.\n", index);
+    return 0;
+}
