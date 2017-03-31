@@ -1,0 +1,29 @@
+#include "stdio.h"
+#include <limits.h>
+
+unsigned bitpath_get(unsigned value, unsigned offset, unsigned count)
+{
+	const unsigned max_n = CHAR_BIT * sizeof(unsigned);
+	if (offset >= max_n)
+		return 0; /* value is padded with infinite zeros on the left */
+	value >>= offset; /* drop offset bits */
+	if (count >= max_n)
+		return value; /* all  bits requested */
+	const unsigned mask = (1u << count) - 1; /* n '1's */
+	return value & mask;
+}
+
+int main()
+{
+	unsigned value, offset, result;
+	
+	result = bitpath_get(100, 3, 3);
+	//100 looks like this: 0110 0100
+	printf("The final result of the function 100, 3, 3 is %o.\n", result);
+
+	result = bitpath_get(100, 2, 1);
+	//100 looks like this: 0110 0100
+	printf("The final result of the function 100, 2, 1 is %d.\n", result);
+
+	return 0;
+}
