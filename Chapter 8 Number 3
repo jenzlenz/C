@@ -24,6 +24,11 @@ struct time elapsedTime(struct time t1, struct time t2) {
 	}
 
 	elapsed.minutes = t2.minutes - t1.minutes;
+
+	if (t1.hours > t2.hours) {
+		--t2.minutes;
+		t2.hours += 12;
+	}
 	elapsed.hours = t2.hours - t1.hours;
 
 	return elapsed;
@@ -31,12 +36,12 @@ struct time elapsedTime(struct time t1, struct time t2) {
 
 int main()
 {
-	struct time t1 = {3, 45, 15};
-	struct time t2 = { 9, 44, 3 };
-
+	struct time t1; //= { 12, 45, 15 };
+	struct time t2; //= { 3, 44, 3 };
 	struct time elapsed = elapsedTime(t1, t2);
 
 	printf("The elapsed time is %i hours %i minutes %.2i seconds. \n", elapsed.hours, elapsed.minutes, elapsed.seconds);
 
     return 0;
 }
+
