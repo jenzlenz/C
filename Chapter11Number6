@@ -39,6 +39,6 @@ int main()
 {
 	int index = 0;
 	index = bitpat_search(0xe1f4, 0x5, 3);
-	printf("The index the pattern was found at is %i.\n", index);
+	printf("The index the pattern was found at %i.\n", index);
     return 0;
 }
