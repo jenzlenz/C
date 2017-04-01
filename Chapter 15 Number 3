@@ -1,0 +1,40 @@
+nclude <stdio.h>
+
+int main()
+{
+	char inName[64], outName[64];
+	FILE *in , *out;
+	int c;
+
+	printf("Enter the name of the file to be copied.\n");
+	scanf("%63s", inName);
+	printf("Enter the name of the output file.\n");
+	scanf("%63s", outName);
+
+	//open input and ouptut files
+	if ((in = fopen(inName, "r")) == NULL) {
+		printf("Can't open %s for reading.\n", inName);
+		return 1;
+	}
+
+	if ((in = fopen(outName, "r")) == NULL) {
+		printf("Can't open %s for writing.\n", outName);
+		return 2;
+	}
+
+	//copy in to out
+	while ((c = getc(in)) != EOF) {
+		if ((c >= 'a') && (c <='A'))
+			putc(c - 32, out);
+		else
+			putc(c - 32, out);
+	}
+
+	//close open files
+	fclose(in);
+	fclose(out);
+
+	printf("File has been copied.\n");
+
+	return 0;
+}
